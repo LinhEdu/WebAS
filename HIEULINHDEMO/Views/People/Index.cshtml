@@ -1,0 +1,38 @@
+@{
+    ViewData["Title"] = "People Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Second Page</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+<h2>People Table</h2>
+<a type="button" class="btn btn-success" asp-controller="People" asp-action="Create">Create</a>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Age</th>
+        <th scope="col">Desription</th>
+        <th scope="col">Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var people in Model)
+    {
+        <tr>
+            <th> scope="row"@people.Id</th>
+            <td>@people.Name</td>
+            <td>@people.Age</td>
+            <td>@people.Description</td>
+            <td>
+                <a type="button" class="btn btn-warning" asp-controller="People" asp-action="Update" asp-route-peopleId="@people.Id">Update</a>
+                <a type="button" onclick="return confirm('Do you want to delete')" class="btn btn-danger" asp-controller="People" asp-action="Delete" asp-route-peopleId="@people.Id">Delete</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

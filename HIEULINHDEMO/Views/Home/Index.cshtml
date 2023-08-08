@@ -1,0 +1,30 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">First Page</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Age</th>
+        <th scope="col">Desription</th>
+    </tr>
+    </thead>
+<tbody>
+    @foreach (var people in Model)
+    {
+        <tr>
+            <th> scope="row"@people.Id</th>
+            <td>@people.Name</td>
+            <td>@people.Age</td>
+            <td>@people.Description</td>
+        </tr>
+    }
+</tbody>
+</table>

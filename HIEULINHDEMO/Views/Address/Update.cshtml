@@ -1,0 +1,25 @@
+@model HIEULINHDEMO.ViewModels.UpSertAddressVM
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<h1>Create new people</h1>
+<br>
+<form method="post">
+    <input asp-for="Address.Id" hidden>
+    <div class="form-group">
+        <label asp-for="Address.Position"></label>
+        <input asp-for="Address.Position" type="text" class="form-control">
+        <span asp-validation-for="Address.Position" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label>Select people</label>
+        @Html.DropDownListFor(a => a.Address.PeopleId,
+            Model.Peoples,"--Select People", new {@class = "form-control"})
+        <span asp-validation-for="Address.PeopleId" class="text-danger"></span>
+    </div>
+    
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

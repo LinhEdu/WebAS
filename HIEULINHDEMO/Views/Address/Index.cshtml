@@ -1,0 +1,42 @@
+@model List<HIEULINHDEMO.Models.Address>
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Third Page</h1>
+</div>
+
+<h2>Address Table</h2>
+<a type="button" class="btn btn-success" asp-controller="Address" asp-action="Create">Create</a>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Position</th>
+        <th scope="col">PeopleId</th>
+        <th scope="col">Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var address in Model)
+    {
+        <tr>
+            <th scope="row">@address.Id</th>
+            <td>@address.Position</td>
+            <td>@address.PeopleId</td>
+            <td>
+                 <a type="button"  
+                    class="btn btn-warning" asp-controller="Address" asp-action="Update"  
+                    asp-route-addressId="@address.Id">Update</a> 
+                <a type="button" onclick="return confirm('Do you want to delete')"
+                   class="btn btn-danger" asp-controller="Address" asp-action="Delete"
+                   asp-route-addressId="@address.Id">Delete</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
